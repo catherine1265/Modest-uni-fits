@@ -1,7 +1,4 @@
-# =====================================================
-# app.py
-# Crop top, bottom, & kartu manual. Lalu klasifikasi + keputusan.
-# =====================================================
+# Input: upload file ATAU kamera. Crop top, bottom, & kartu.
 
 import os
 import tempfile
@@ -14,7 +11,7 @@ from src.services.decision import load_models, run_decision_cropped
 
 st.set_page_config(page_title="Fashion + Card Checker", layout="wide")
 st.title("Fashion + Card Checker")
-st.write("Upload gambar, lalu crop bagian atas, bawah, dan kartu.")
+st.write("Pilih input gambar, lalu crop bagian atas, bawah, dan kartu.")
 
 
 @st.cache_resource
@@ -31,10 +28,16 @@ def save_pil(img):
     return tmp.name
 
 
-uploaded = st.file_uploader("Upload gambar", type=["jpg", "jpeg", "png"])
+# --- Pilih sumber input ---
+sumber = st.radio("Sumber gambar:", ["Upload file", "Kamera"], horizontal=True)
 
-if uploaded is not None:
-    image = Image.open(uploaded).convert("RGB")
+if sumber == "Upload file":
+    file = st.file_uploader("Upload gambar", type=["jpg", "jpeg", "png"])
+else:
+    file = st.camera_input("Ambil foto")
+
+if file is not None:
+    image = Image.open(file).convert("RGB")
 
     col1, col2, col3 = st.columns(3)
     with col1:
