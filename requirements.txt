@@ -1,4 +1,5 @@
 streamlit
+streamlit-cropper
 scikit-learn
 scikit-image
 opencv-python-headless
