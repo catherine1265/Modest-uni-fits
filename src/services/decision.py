@@ -1,3 +1,4 @@
+from src.utils.helpers import ensure_models
 def run_decision_cropped(top_path, bottom_path, card_path, models=None):
     if models is None:
         models = load_models()
