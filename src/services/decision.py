@@ -9,9 +9,11 @@ from src.config.settings import (
     CARD_MODEL_PATH,
 )
 from src.services.classifier import check_top, check_bottom, check_card
+from src.utils.helpers import ensure_models
 
 
 def load_models():
+    ensure_models()  # download top & bottom dari Drive kalau belum ada
     models = {}
     for name, path in [("top", TOP_MODEL_PATH), ("bottom", BOTTOM_MODEL_PATH), ("card", CARD_MODEL_PATH)]:
         if not os.path.exists(path):
