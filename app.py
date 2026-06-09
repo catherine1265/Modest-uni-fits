@@ -373,44 +373,59 @@ if file is not None:
         <span class="step-num">2</span>
         <span class="step-text">Crop Tiap Bagian</span>
     </div>
-    <p class="helper-text">Sesuaikan kotak crop untuk masing-masing bagian outfit, lalu klik Analisis.</p>
+    <p class="helper-text">Gambar yang sama ditampilkan 3x — crop setiap bagian secara bebas dan presisi.</p>
     """, unsafe_allow_html=True)
 
-    col1, col2, col3 = st.columns(3, gap="medium")
+    col_left, col_right = st.columns([3, 2], gap="large")
 
-    with col1:
+    with col_left:
         st.markdown("""
         <div class="crop-section">
-            <div class="crop-icon-box">👕</div>
-            <p class="crop-title">Atasan</p>
-            <p class="crop-subtitle">Kemeja, kaos, dll.</p>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.6rem;">
+                <div class="crop-icon-box">👕</div>
+                <div><p class="crop-title">Atasan</p><p class="crop-subtitle">Crop area kemeja / kaos</p></div>
+            </div>
         </div>
         """, unsafe_allow_html=True)
-        crop_top = st_cropper(image, realtime_update=True, key="top", aspect_ratio=(3, 4))
+        crop_top = st_cropper(image, realtime_update=True, key="top", aspect_ratio=None)
+
+        st.markdown("<div style='height:1rem'></div>", unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="crop-section">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.6rem;">
+                <div class="crop-icon-box">👖</div>
+                <div><p class="crop-title">Bawahan</p><p class="crop-subtitle">Crop area celana / rok</p></div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        crop_bottom = st_cropper(image, realtime_update=True, key="bottom", aspect_ratio=None)
+
+        st.markdown("<div style='height:1rem'></div>", unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="crop-section">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.6rem;">
+                <div class="crop-icon-box">🪪</div>
+                <div><p class="crop-title">Kartu Identitas</p><p class="crop-subtitle">Crop area KTM / ID card</p></div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        crop_card = st_cropper(image, realtime_update=True, key="card", aspect_ratio=None)
+
+    with col_right:
+        st.markdown("""
+        <div class="crop-section" style="padding:1rem;">
+            <p class="crop-title" style="margin-bottom:1rem;">📸 Preview Hasil Crop</p>
+        </div>
+        """, unsafe_allow_html=True)
+        st.markdown("**👕 Atasan**")
         if crop_top:
             st.image(crop_top, use_container_width=True)
-
-    with col2:
-        st.markdown("""
-        <div class="crop-section">
-            <div class="crop-icon-box">👖</div>
-            <p class="crop-title">Bawahan</p>
-            <p class="crop-subtitle">Celana, rok, dll.</p>
-        </div>
-        """, unsafe_allow_html=True)
-        crop_bottom = st_cropper(image, realtime_update=True, key="bottom", aspect_ratio=(3, 4))
+        st.markdown("**👖 Bawahan**")
         if crop_bottom:
             st.image(crop_bottom, use_container_width=True)
-
-    with col3:
-        st.markdown("""
-        <div class="crop-section">
-            <div class="crop-icon-box">🪪</div>
-            <p class="crop-title">Kartu Identitas</p>
-            <p class="crop-subtitle">KTM / ID card</p>
-        </div>
-        """, unsafe_allow_html=True)
-        crop_card = st_cropper(image, realtime_update=True, key="card", aspect_ratio=(3, 4))
+        st.markdown("**🪪 Kartu Identitas**")
         if crop_card:
             st.image(crop_card, use_container_width=True)
 
