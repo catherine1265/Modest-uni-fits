@@ -25,13 +25,20 @@ st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
+    /* Palette
+       Antique Ivory   #F9EAD2
+       Champagne       #F8EEC2
+       Juicy Peach     #DB918F
+       Spanish Bistre  #837534
+       Codium Fragile  #4F5127
+    */
+
     html, body, [class*="css"] {
         font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    /* Background */
     .stApp {
-        background: linear-gradient(135deg, #f0f4ff 0%, #faf5ff 50%, #fff0f6 100%);
+        background-color: #F9EAD2;
         min-height: 100vh;
     }
 
@@ -41,52 +48,50 @@ st.markdown("""
         max-width: 1080px;
     }
 
-    /* ── Hero header ── */
+    /* ── Hero ── */
     .hero {
-        background: linear-gradient(135deg, #667eea 0%, #a855f7 50%, #ec4899 100%);
-        border-radius: 0 0 32px 32px;
+        background: linear-gradient(135deg, #4F5127 0%, #837534 100%);
+        border-radius: 0 0 36px 36px;
         padding: 3rem 2rem 2.5rem;
         text-align: center;
         margin-bottom: 2.5rem;
         position: relative;
         overflow: hidden;
     }
-    .hero::before {
+    .hero::after {
         content: '';
         position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
-        pointer-events: none;
+        bottom: -30px; right: -30px;
+        width: 160px; height: 160px;
+        background: rgba(249,234,210,0.07);
+        border-radius: 50%;
     }
     .hero-badge {
         display: inline-block;
-        background: rgba(255,255,255,0.2);
-        color: white;
-        font-size: 0.7rem;
+        background: rgba(249,234,210,0.18);
+        color: #F8EEC2;
+        font-size: 0.68rem;
         font-weight: 700;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
-        padding: 4px 14px;
+        padding: 4px 16px;
         border-radius: 99px;
         margin-bottom: 1rem;
-        border: 1px solid rgba(255,255,255,0.3);
+        border: 1px solid rgba(248,238,194,0.3);
     }
     .hero h1 {
         font-size: 2.4rem;
         font-weight: 800;
-        color: white;
+        color: #F9EAD2;
         margin: 0 0 0.5rem;
         letter-spacing: -1px;
-        text-shadow: 0 2px 12px rgba(0,0,0,0.15);
     }
     .hero p {
-        color: rgba(255,255,255,0.85);
-        font-size: 0.95rem;
+        color: #F8EEC2;
+        font-size: 0.92rem;
         margin: 0;
         font-weight: 500;
+        opacity: 0.85;
     }
 
     /* ── Step pill ── */
@@ -94,88 +99,78 @@ st.markdown("""
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: white;
-        border: 1px solid #E5E7EB;
+        background: #F8EEC2;
+        border: 1.5px solid #837534;
         border-radius: 99px;
         padding: 5px 14px 5px 8px;
         margin-bottom: 1rem;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        box-shadow: 0 1px 4px rgba(131,117,52,0.12);
     }
     .step-num {
-        background: linear-gradient(135deg, #667eea, #a855f7);
-        color: white;
+        background: linear-gradient(135deg, #837534, #4F5127);
+        color: #F9EAD2;
         font-size: 0.65rem;
         font-weight: 800;
-        width: 20px;
-        height: 20px;
+        width: 20px; height: 20px;
         border-radius: 50%;
         display: inline-flex;
         align-items: center;
         justify-content: center;
     }
     .step-text {
-        font-size: 0.75rem;
+        font-size: 0.73rem;
         font-weight: 700;
-        color: #374151;
-        letter-spacing: 0.04em;
+        color: #4F5127;
+        letter-spacing: 0.05em;
         text-transform: uppercase;
     }
 
-    /* ── Source selector ── */
+    /* ── Source card ── */
     .source-card {
-        background: white;
-        border: 1.5px solid #E5E7EB;
+        background: #F8EEC2;
+        border: 1.5px solid #837534;
         border-radius: 16px;
         padding: 1.5rem;
         margin-bottom: 1.5rem;
-        box-shadow: 0 2px 12px rgba(102,126,234,0.06);
+        box-shadow: 0 2px 12px rgba(131,117,52,0.08);
     }
 
     /* ── Crop section ── */
     .crop-section {
-        background: white;
-        border: 1.5px solid #E5E7EB;
+        background: #F8EEC2;
+        border: 1.5px solid #837534;
         border-radius: 20px;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 4px 20px rgba(102,126,234,0.08);
+        padding: 1.25rem;
+        margin-bottom: 0.5rem;
+        box-shadow: 0 4px 16px rgba(79,81,39,0.08);
     }
-
-    .crop-header {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 1rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid #F3F4F6;
-    }
-    .crop-icon {
-        font-size: 1.4rem;
-        width: 40px;
-        height: 40px;
-        background: linear-gradient(135deg, #f0f4ff, #faf5ff);
+    .crop-icon-box {
+        width: 38px; height: 38px;
+        background: #F9EAD2;
+        border: 1.5px solid #DB918F;
         border-radius: 10px;
-        display: flex;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid #E5E7EB;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
     }
     .crop-title {
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         font-weight: 700;
-        color: #111827;
+        color: #4F5127;
         margin: 0;
     }
     .crop-subtitle {
-        font-size: 0.75rem;
-        color: #9CA3AF;
+        font-size: 0.73rem;
+        color: #837534;
         margin: 0;
     }
 
     /* ── Analyze button ── */
     .stButton > button {
-        background: linear-gradient(135deg, #667eea 0%, #a855f7 100%) !important;
-        color: white !important;
+        background: linear-gradient(135deg, #837534 0%, #4F5127 100%) !important;
+        color: #F9EAD2 !important;
         border: none !important;
         border-radius: 12px !important;
         padding: 0.75rem 2rem !important;
@@ -183,12 +178,11 @@ st.markdown("""
         font-size: 0.95rem !important;
         letter-spacing: 0.02em !important;
         width: 100%;
-        box-shadow: 0 4px 15px rgba(102,126,234,0.4) !important;
-        transition: all 0.2s !important;
+        box-shadow: 0 4px 16px rgba(79,81,39,0.3) !important;
     }
     .stButton > button:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 6px 20px rgba(102,126,234,0.5) !important;
+        opacity: 0.92;
+        box-shadow: 0 6px 20px rgba(79,81,39,0.4) !important;
     }
 
     /* ── Result banner ── */
@@ -197,54 +191,30 @@ st.markdown("""
         padding: 2rem;
         text-align: center;
         margin: 1.5rem 0;
-        position: relative;
-        overflow: hidden;
-    }
-    .result-banner::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        opacity: 0.05;
-        background-size: 30px 30px;
     }
     .result-pass {
-        background: linear-gradient(135deg, #d1fae5, #a7f3d0);
-        border: 2px solid #6EE7B7;
+        background: linear-gradient(135deg, #F8EEC2, #F9EAD2);
+        border: 2px solid #837534;
     }
     .result-fail {
-        background: linear-gradient(135deg, #fee2e2, #fecaca);
-        border: 2px solid #FCA5A5;
+        background: linear-gradient(135deg, #f7dede, #f9e8e8);
+        border: 2px solid #DB918F;
     }
-    .result-emoji {
-        font-size: 3rem;
-        display: block;
-        margin-bottom: 0.5rem;
-    }
-    .result-title {
-        font-size: 1.6rem;
-        font-weight: 800;
-        letter-spacing: -0.5px;
-        margin: 0;
-    }
-    .result-pass .result-title { color: #065F46; }
-    .result-fail .result-title { color: #991B1B; }
-    .result-sub {
-        font-size: 0.85rem;
-        font-weight: 500;
-        margin-top: 0.3rem;
-        opacity: 0.7;
-    }
-    .result-pass .result-sub { color: #065F46; }
-    .result-fail .result-sub { color: #991B1B; }
+    .result-emoji { font-size: 3rem; display: block; margin-bottom: 0.5rem; }
+    .result-title { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; margin: 0; }
+    .result-pass .result-title { color: #4F5127; }
+    .result-fail .result-title { color: #8B3A3A; }
+    .result-sub { font-size: 0.85rem; font-weight: 500; margin-top: 0.3rem; opacity: 0.75; }
+    .result-pass .result-sub { color: #4F5127; }
+    .result-fail .result-sub { color: #8B3A3A; }
 
     /* ── Detail card ── */
     .detail-card {
-        background: white;
-        border: 1.5px solid #E5E7EB;
+        background: #F8EEC2;
+        border: 1.5px solid #837534;
         border-radius: 16px;
         padding: 1.25rem;
-        box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-        height: 100%;
+        box-shadow: 0 2px 10px rgba(131,117,52,0.08);
     }
     .detail-card-header {
         display: flex;
@@ -253,24 +223,24 @@ st.markdown("""
         margin-bottom: 1rem;
     }
     .detail-label {
-        font-size: 0.7rem;
+        font-size: 0.68rem;
         font-weight: 700;
-        color: #9CA3AF;
+        color: #837534;
         text-transform: uppercase;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.09em;
     }
     .detail-status-pass {
-        background: #D1FAE5;
-        color: #065F46;
-        font-size: 0.7rem;
+        background: #4F5127;
+        color: #F8EEC2;
+        font-size: 0.68rem;
         font-weight: 700;
         padding: 2px 10px;
         border-radius: 99px;
     }
     .detail-status-fail {
-        background: #FEE2E2;
-        color: #991B1B;
-        font-size: 0.7rem;
+        background: #DB918F;
+        color: white;
+        font-size: 0.68rem;
         font-weight: 700;
         padding: 2px 10px;
         border-radius: 99px;
@@ -278,68 +248,58 @@ st.markdown("""
     .detail-class {
         font-size: 1.3rem;
         font-weight: 800;
-        color: #111827;
+        color: #4F5127;
         margin: 0 0 0.25rem;
         letter-spacing: -0.3px;
     }
     .detail-conf {
-        font-size: 0.8rem;
-        color: #6B7280;
+        font-size: 0.78rem;
+        color: #837534;
         margin-bottom: 0.75rem;
     }
     .conf-track {
-        background: #F3F4F6;
+        background: #F9EAD2;
         border-radius: 99px;
         height: 8px;
         overflow: hidden;
+        border: 1px solid rgba(131,117,52,0.2);
     }
     .conf-fill {
         height: 100%;
         border-radius: 99px;
-        transition: width 0.6s ease;
     }
 
     /* ── Empty state ── */
     .empty-state {
         text-align: center;
         padding: 4rem 2rem;
-        background: white;
+        background: #F8EEC2;
         border-radius: 20px;
-        border: 2px dashed #E5E7EB;
+        border: 2px dashed #837534;
         margin-top: 1rem;
     }
-    .empty-state-icon {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-        display: block;
-    }
-    .empty-state h3 {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #374151;
-        margin: 0 0 0.4rem;
-    }
-    .empty-state p {
-        font-size: 0.85rem;
-        color: #9CA3AF;
-        margin: 0;
-    }
+    .empty-state-icon { font-size: 4rem; margin-bottom: 1rem; display: block; }
+    .empty-state h3 { font-size: 1.1rem; font-weight: 700; color: #4F5127; margin: 0 0 0.4rem; }
+    .empty-state p { font-size: 0.85rem; color: #837534; margin: 0; }
 
-    /* ── Divider ── */
-    hr { border-color: #F3F4F6; margin: 1.5rem 0; }
-
-    /* ── Radio ── */
+    /* ── Misc ── */
+    hr { border-color: #837534; opacity: 0.2; margin: 1.5rem 0; }
     .stRadio > div { gap: 0.75rem; }
-    .stRadio label { font-weight: 500; }
+    .stRadio label { font-weight: 500; color: #4F5127; }
+    #MainMenu, footer, header { visibility: hidden; }
 
-    /* Hide branding ── */
-    #MainMenu, footer { visibility: hidden; }
-    header { visibility: hidden; }
+    /* Caption / helper text */
+    .helper-text {
+        font-size: 0.82rem;
+        color: #837534;
+        margin: -0.5rem 0 1.2rem;
+        font-weight: 500;
+    }
 </style>
 """, unsafe_allow_html=True)
 
 
-# ── Hero Header ───────────────────────────────────────────────────────────────
+# ── Hero ─────────────────────────────────────────────────────────────────────
 st.markdown("""
 <div class="hero">
     <div class="hero-badge">✦ AI Powered · BINUS University</div>
@@ -413,9 +373,7 @@ if file is not None:
         <span class="step-num">2</span>
         <span class="step-text">Crop Tiap Bagian</span>
     </div>
-    <p style="font-size:0.82rem; color:#6B7280; margin: -0.5rem 0 1rem;">
-        Sesuaikan kotak crop untuk masing-masing bagian outfit, lalu klik Analisis.
-    </p>
+    <p class="helper-text">Sesuaikan kotak crop untuk masing-masing bagian outfit, lalu klik Analisis.</p>
     """, unsafe_allow_html=True)
 
     col1, col2, col3 = st.columns(3, gap="medium")
@@ -423,13 +381,9 @@ if file is not None:
     with col1:
         st.markdown("""
         <div class="crop-section">
-            <div class="crop-header">
-                <div class="crop-icon">👕</div>
-                <div>
-                    <p class="crop-title">Atasan</p>
-                    <p class="crop-subtitle">Kemeja, kaos, dll.</p>
-                </div>
-            </div>
+            <div class="crop-icon-box">👕</div>
+            <p class="crop-title">Atasan</p>
+            <p class="crop-subtitle">Kemeja, kaos, dll.</p>
         </div>
         """, unsafe_allow_html=True)
         crop_top = st_cropper(image, realtime_update=True, key="top", aspect_ratio=(3, 4))
@@ -439,13 +393,9 @@ if file is not None:
     with col2:
         st.markdown("""
         <div class="crop-section">
-            <div class="crop-header">
-                <div class="crop-icon">👖</div>
-                <div>
-                    <p class="crop-title">Bawahan</p>
-                    <p class="crop-subtitle">Celana, rok, dll.</p>
-                </div>
-            </div>
+            <div class="crop-icon-box">👖</div>
+            <p class="crop-title">Bawahan</p>
+            <p class="crop-subtitle">Celana, rok, dll.</p>
         </div>
         """, unsafe_allow_html=True)
         crop_bottom = st_cropper(image, realtime_update=True, key="bottom", aspect_ratio=(3, 4))
@@ -455,13 +405,9 @@ if file is not None:
     with col3:
         st.markdown("""
         <div class="crop-section">
-            <div class="crop-header">
-                <div class="crop-icon">🪪</div>
-                <div>
-                    <p class="crop-title">Kartu Identitas</p>
-                    <p class="crop-subtitle">KTM / ID card</p>
-                </div>
-            </div>
+            <div class="crop-icon-box">🪪</div>
+            <p class="crop-title">Kartu Identitas</p>
+            <p class="crop-subtitle">KTM / ID card</p>
         </div>
         """, unsafe_allow_html=True)
         crop_card = st_cropper(image, realtime_update=True, key="card", aspect_ratio=(3, 4))
@@ -500,7 +446,6 @@ if file is not None:
             </div>
             """, unsafe_allow_html=True)
 
-            # Overall banner
             if result["status"] == "PASS":
                 st.markdown("""
                 <div class="result-banner result-pass">
@@ -518,7 +463,6 @@ if file is not None:
                 </div>
                 """, unsafe_allow_html=True)
 
-            # Detail cards
             top    = result["top"]
             bottom = result["bottom"]
             card   = result["card"]
@@ -526,7 +470,7 @@ if file is not None:
             dc1, dc2, dc3 = st.columns(3, gap="medium")
 
             with dc1:
-                color = "#10B981" if top["detected"] else "#EF4444"
+                color = "#4F5127" if top["detected"] else "#DB918F"
                 st.markdown(f"""
                 <div class="detail-card">
                     <div class="detail-card-header">
@@ -540,7 +484,7 @@ if file is not None:
                 """, unsafe_allow_html=True)
 
             with dc2:
-                color = "#10B981" if bottom["detected"] else "#EF4444"
+                color = "#4F5127" if bottom["detected"] else "#DB918F"
                 st.markdown(f"""
                 <div class="detail-card">
                     <div class="detail-card-header">
@@ -555,7 +499,7 @@ if file is not None:
 
             with dc3:
                 card_label = "Terdeteksi" if card["label"] == 1 else "Tidak Terdeteksi"
-                color = "#10B981" if card["detected"] else "#EF4444"
+                color = "#4F5127" if card["detected"] else "#DB918F"
                 st.markdown(f"""
                 <div class="detail-card">
                     <div class="detail-card-header">
