@@ -461,6 +461,11 @@ if file is not None:
         if crop_top is None or crop_bottom is None or crop_card is None:
             st.warning("Pastikan semua bagian sudah di-crop sebelum analisis.")
         else:
+            # Keep copies for display in results
+            crop_top_display    = crop_top
+            crop_bottom_display = crop_bottom
+            crop_card_display   = crop_card
+
             with st.spinner("Menganalisis outfit kamu..."):
                 top_path    = save_pil(crop_top, portrait=True)
                 bottom_path = save_pil(crop_bottom, portrait=True)
@@ -518,6 +523,7 @@ if file is not None:
                     <p class="detail-conf">Confidence: {top['confidence']:.1%}</p>
                     """ + conf_bar(top['confidence'], color) + "</div>"
                 st.markdown(top_html, unsafe_allow_html=True)
+                st.image(crop_top_display, use_container_width=True, caption="Foto atasan")
 
             with dc2:
                 color = "#A8B58A" if bottom["detected"] else "#B46A72"
@@ -531,6 +537,7 @@ if file is not None:
                     <p class="detail-conf">Confidence: {bottom['confidence']:.1%}</p>
                     """ + conf_bar(bottom['confidence'], color) + "</div>"
                 st.markdown(bottom_html, unsafe_allow_html=True)
+                st.image(crop_bottom_display, use_container_width=True, caption="Foto bawahan")
 
             with dc3:
                 card_label = "Terdeteksi" if card["label"] == 1 else "Tidak Terdeteksi"
@@ -545,6 +552,7 @@ if file is not None:
                     <p class="detail-conf">Confidence: {card['confidence']:.1%}</p>
                     """ + conf_bar(card['confidence'], color) + "</div>"
                 st.markdown(card_html, unsafe_allow_html=True)
+                st.image(crop_card_display, use_container_width=True, caption="Foto kartu identitas")
 
             st.markdown("<br>", unsafe_allow_html=True)
             with st.expander("📋 Lihat log detail keputusan"):
