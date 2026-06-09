@@ -508,7 +508,7 @@ if file is not None:
 
             with dc1:
                 color = "#A8B58A" if top["detected"] else "#B46A72"
-                st.markdown(f"""
+                top_html = f"""
                 <div class="detail-card">
                     <div class="detail-card-header">
                         <span class="detail-label">👕 Atasan</span>
@@ -516,13 +516,12 @@ if file is not None:
                     </div>
                     <p class="detail-class">{top['class'].title()}</p>
                     <p class="detail-conf">Confidence: {top['confidence']:.1%}</p>
-                    {conf_bar(top['confidence'], color)}
-                </div>
-                """, unsafe_allow_html=True)
+                    """ + conf_bar(top['confidence'], color) + "</div>"
+                st.markdown(top_html, unsafe_allow_html=True)
 
             with dc2:
                 color = "#A8B58A" if bottom["detected"] else "#B46A72"
-                st.markdown(f"""
+                bottom_html = f"""
                 <div class="detail-card">
                     <div class="detail-card-header">
                         <span class="detail-label">👖 Bawahan</span>
@@ -530,14 +529,13 @@ if file is not None:
                     </div>
                     <p class="detail-class">{bottom['class'].title()}</p>
                     <p class="detail-conf">Confidence: {bottom['confidence']:.1%}</p>
-                    {conf_bar(bottom['confidence'], color)}
-                </div>
-                """, unsafe_allow_html=True)
+                    """ + conf_bar(bottom['confidence'], color) + "</div>"
+                st.markdown(bottom_html, unsafe_allow_html=True)
 
             with dc3:
                 card_label = "Terdeteksi" if card["label"] == 1 else "Tidak Terdeteksi"
                 color = "#A8B58A" if card["detected"] else "#B46A72"
-                st.markdown(f"""
+                card_html = f"""
                 <div class="detail-card">
                     <div class="detail-card-header">
                         <span class="detail-label">🪪 Kartu Identitas</span>
@@ -545,9 +543,8 @@ if file is not None:
                     </div>
                     <p class="detail-class">{card_label}</p>
                     <p class="detail-conf">Confidence: {card['confidence']:.1%}</p>
-                    {conf_bar(card['confidence'], color)}
-                </div>
-                """, unsafe_allow_html=True)
+                    """ + conf_bar(card['confidence'], color) + "</div>"
+                st.markdown(card_html, unsafe_allow_html=True)
 
             st.markdown("<br>", unsafe_allow_html=True)
             with st.expander("📋 Lihat log detail keputusan"):
