@@ -371,7 +371,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 # ── Step 2: Crop ──────────────────────────────────────────────────────────────
 if file is not None:
-    # Auto-rotate based on EXIF so phone photos appear upright
+    # Auto-rotate: fix EXIF orientation (uploads) AND landscape webcam photos
     _img_raw = Image.open(file)
     try:
         from PIL.ExifTags import TAGS
@@ -385,6 +385,9 @@ if file is not None:
                     break
     except Exception:
         pass
+    # If still landscape (width > height), rotate 90° to portrait
+    if _img_raw.width > _img_raw.height:
+        _img_raw = _img_raw.rotate(90, expand=True)
     image = _img_raw.convert("RGB")
 
     st.markdown("""
