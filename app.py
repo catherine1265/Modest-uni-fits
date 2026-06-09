@@ -325,7 +325,12 @@ except Exception as e:
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
-def save_pil(img: Image.Image) -> str:
+def save_pil(img: Image.Image, portrait: bool = False) -> str:
+    if portrait:
+        w, h = img.size
+        target_h = max(h, int(w * 4 / 3))
+        target_w = int(target_h * 3 / 4)
+        img = img.resize((target_w, target_h), Image.LANCZOS)
     tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".png")
     img.save(tmp.name)
     return tmp.name
@@ -440,9 +445,9 @@ if file is not None:
             st.warning("Pastikan semua bagian sudah di-crop sebelum analisis.")
         else:
             with st.spinner("Menganalisis outfit kamu..."):
-                top_path    = save_pil(crop_top)
-                bottom_path = save_pil(crop_bottom)
-                card_path   = save_pil(crop_card)
+                top_path    = save_pil(crop_top, portrait=True)
+                bottom_path = save_pil(crop_bottom, portrait=True)
+                card_path   = save_pil(crop_card, portrait=True)
 
                 try:
                     result = run_decision_cropped(top_path, bottom_path, card_path, models=models)
