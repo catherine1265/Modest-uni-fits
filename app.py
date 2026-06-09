@@ -26,11 +26,11 @@ st.markdown("""
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
     /* Palette
-       Antique Ivory   #F9EAD2
-       Champagne       #F8EEC2
-       Juicy Peach     #DB918F
-       Spanish Bistre  #837534
-       Codium Fragile  #4F5127
+       Vanilla Cream   #FFF7E6
+       Blush Petal     #F7C8D3
+       Rosewood        #B46A72
+       Sage Leaf       #A8B58A
+       Midnight Lagoon #2D3A47
     */
 
     html, body, [class*="css"] {
@@ -38,7 +38,7 @@ st.markdown("""
     }
 
     .stApp {
-        background-color: #F9EAD2;
+        background-color: #FFF7E6;
         min-height: 100vh;
     }
 
@@ -50,7 +50,7 @@ st.markdown("""
 
     /* ── Hero ── */
     .hero {
-        background: linear-gradient(135deg, #4F5127 0%, #837534 100%);
+        background: linear-gradient(135deg, #2D3A47 0%, #B46A72 60%, #A9B7C6 100%);
         border-radius: 0 0 36px 36px;
         padding: 3rem 2rem 2.5rem;
         text-align: center;
@@ -69,7 +69,7 @@ st.markdown("""
     .hero-badge {
         display: inline-block;
         background: rgba(249,234,210,0.18);
-        color: #F8EEC2;
+        color: #F7C8D3;
         font-size: 0.68rem;
         font-weight: 700;
         letter-spacing: 0.14em;
@@ -82,12 +82,12 @@ st.markdown("""
     .hero h1 {
         font-size: 2.4rem;
         font-weight: 800;
-        color: #F9EAD2;
+        color: #FFF7E6;
         margin: 0 0 0.5rem;
         letter-spacing: -1px;
     }
     .hero p {
-        color: #F8EEC2;
+        color: #F7C8D3;
         font-size: 0.92rem;
         margin: 0;
         font-weight: 500;
@@ -99,16 +99,16 @@ st.markdown("""
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: #F8EEC2;
-        border: 1.5px solid #837534;
+        background: #F7C8D3;
+        border: 1.5px solid #A9B7C6;
         border-radius: 99px;
         padding: 5px 14px 5px 8px;
         margin-bottom: 1rem;
         box-shadow: 0 1px 4px rgba(131,117,52,0.12);
     }
     .step-num {
-        background: linear-gradient(135deg, #837534, #4F5127);
-        color: #F9EAD2;
+        background: linear-gradient(135deg, #B46A72, #2D3A47);
+        color: #FFF7E6;
         font-size: 0.65rem;
         font-weight: 800;
         width: 20px; height: 20px;
@@ -120,15 +120,15 @@ st.markdown("""
     .step-text {
         font-size: 0.73rem;
         font-weight: 700;
-        color: #4F5127;
+        color: #2D3A47;
         letter-spacing: 0.05em;
         text-transform: uppercase;
     }
 
     /* ── Source card ── */
     .source-card {
-        background: #F8EEC2;
-        border: 1.5px solid #837534;
+        background: #F7C8D3;
+        border: 1.5px solid #A9B7C6;
         border-radius: 16px;
         padding: 1.5rem;
         margin-bottom: 1.5rem;
@@ -137,8 +137,8 @@ st.markdown("""
 
     /* ── Crop section ── */
     .crop-section {
-        background: #F8EEC2;
-        border: 1.5px solid #837534;
+        background: #F7C8D3;
+        border: 1.5px solid #A9B7C6;
         border-radius: 20px;
         padding: 1.25rem;
         margin-bottom: 0.5rem;
@@ -146,8 +146,8 @@ st.markdown("""
     }
     .crop-icon-box {
         width: 38px; height: 38px;
-        background: #F9EAD2;
-        border: 1.5px solid #DB918F;
+        background: #FFF7E6;
+        border: 1.5px solid #A9B7C6;
         border-radius: 10px;
         display: inline-flex;
         align-items: center;
@@ -158,19 +158,19 @@ st.markdown("""
     .crop-title {
         font-size: 0.88rem;
         font-weight: 700;
-        color: #4F5127;
+        color: #2D3A47;
         margin: 0;
     }
     .crop-subtitle {
         font-size: 0.73rem;
-        color: #837534;
+        color: #B46A72;
         margin: 0;
     }
 
     /* ── Analyze button ── */
     .stButton > button {
-        background: linear-gradient(135deg, #837534 0%, #4F5127 100%) !important;
-        color: #F9EAD2 !important;
+        background: linear-gradient(135deg, #B46A72 0%, #2D3A47 100%) !important;
+        color: #FFF7E6 !important;
         border: none !important;
         border-radius: 12px !important;
         padding: 0.75rem 2rem !important;
@@ -193,25 +193,25 @@ st.markdown("""
         margin: 1.5rem 0;
     }
     .result-pass {
-        background: linear-gradient(135deg, #F8EEC2, #F9EAD2);
-        border: 2px solid #837534;
+        background: linear-gradient(135deg, #F7C8D3, #FFF7E6);
+        border: 2px solid #B46A72;
     }
     .result-fail {
         background: linear-gradient(135deg, #f7dede, #f9e8e8);
-        border: 2px solid #DB918F;
+        border: 2px solid #B46A72;
     }
     .result-emoji { font-size: 3rem; display: block; margin-bottom: 0.5rem; }
     .result-title { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.5px; margin: 0; }
-    .result-pass .result-title { color: #4F5127; }
-    .result-fail .result-title { color: #8B3A3A; }
+    .result-pass .result-title { color: #2D3A47; }
+    .result-fail .result-title { color: #7a3a45; }
     .result-sub { font-size: 0.85rem; font-weight: 500; margin-top: 0.3rem; opacity: 0.75; }
-    .result-pass .result-sub { color: #4F5127; }
-    .result-fail .result-sub { color: #8B3A3A; }
+    .result-pass .result-sub { color: #2D3A47; }
+    .result-fail .result-sub { color: #7a3a45; }
 
     /* ── Detail card ── */
     .detail-card {
-        background: #F8EEC2;
-        border: 1.5px solid #837534;
+        background: #F7C8D3;
+        border: 1.5px solid #A9B7C6;
         border-radius: 16px;
         padding: 1.25rem;
         box-shadow: 0 2px 10px rgba(131,117,52,0.08);
@@ -225,20 +225,20 @@ st.markdown("""
     .detail-label {
         font-size: 0.68rem;
         font-weight: 700;
-        color: #837534;
+        color: #B46A72;
         text-transform: uppercase;
         letter-spacing: 0.09em;
     }
     .detail-status-pass {
-        background: #4F5127;
-        color: #F8EEC2;
+        background: #A8B58A;
+        color: #F7C8D3;
         font-size: 0.68rem;
         font-weight: 700;
         padding: 2px 10px;
         border-radius: 99px;
     }
     .detail-status-fail {
-        background: #DB918F;
+        background: #B46A72;
         color: white;
         font-size: 0.68rem;
         font-weight: 700;
@@ -248,17 +248,17 @@ st.markdown("""
     .detail-class {
         font-size: 1.3rem;
         font-weight: 800;
-        color: #4F5127;
+        color: #2D3A47;
         margin: 0 0 0.25rem;
         letter-spacing: -0.3px;
     }
     .detail-conf {
         font-size: 0.78rem;
-        color: #837534;
+        color: #B46A72;
         margin-bottom: 0.75rem;
     }
     .conf-track {
-        background: #F9EAD2;
+        background: #FFF7E6;
         border-radius: 99px;
         height: 8px;
         overflow: hidden;
@@ -273,25 +273,25 @@ st.markdown("""
     .empty-state {
         text-align: center;
         padding: 4rem 2rem;
-        background: #F8EEC2;
+        background: #F7C8D3;
         border-radius: 20px;
-        border: 2px dashed #837534;
+        border: 2px dashed #B46A72;
         margin-top: 1rem;
     }
     .empty-state-icon { font-size: 4rem; margin-bottom: 1rem; display: block; }
-    .empty-state h3 { font-size: 1.1rem; font-weight: 700; color: #4F5127; margin: 0 0 0.4rem; }
-    .empty-state p { font-size: 0.85rem; color: #837534; margin: 0; }
+    .empty-state h3 { font-size: 1.1rem; font-weight: 700; color: #2D3A47; margin: 0 0 0.4rem; }
+    .empty-state p { font-size: 0.85rem; color: #B46A72; margin: 0; }
 
     /* ── Misc ── */
-    hr { border-color: #837534; opacity: 0.2; margin: 1.5rem 0; }
+    hr { border-color: #B46A72; opacity: 0.2; margin: 1.5rem 0; }
     .stRadio > div { gap: 0.75rem; }
-    .stRadio label { font-weight: 500; color: #4F5127; }
+    .stRadio label { font-weight: 500; color: #2D3A47; }
     #MainMenu, footer, header { visibility: hidden; }
 
     /* Caption / helper text */
     .helper-text {
         font-size: 0.82rem;
-        color: #837534;
+        color: #B46A72;
         margin: -0.5rem 0 1.2rem;
         font-weight: 500;
     }
@@ -470,7 +470,7 @@ if file is not None:
             dc1, dc2, dc3 = st.columns(3, gap="medium")
 
             with dc1:
-                color = "#4F5127" if top["detected"] else "#DB918F"
+                color = "#A8B58A" if top["detected"] else "#B46A72"
                 st.markdown(f"""
                 <div class="detail-card">
                     <div class="detail-card-header">
@@ -484,7 +484,7 @@ if file is not None:
                 """, unsafe_allow_html=True)
 
             with dc2:
-                color = "#4F5127" if bottom["detected"] else "#DB918F"
+                color = "#A8B58A" if bottom["detected"] else "#B46A72"
                 st.markdown(f"""
                 <div class="detail-card">
                     <div class="detail-card-header">
@@ -499,7 +499,7 @@ if file is not None:
 
             with dc3:
                 card_label = "Terdeteksi" if card["label"] == 1 else "Tidak Terdeteksi"
-                color = "#4F5127" if card["detected"] else "#DB918F"
+                color = "#A8B58A" if card["detected"] else "#B46A72"
                 st.markdown(f"""
                 <div class="detail-card">
                     <div class="detail-card-header">
