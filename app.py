@@ -473,7 +473,7 @@ if file is not None:
 
                 try:
                     result = run_decision_cropped(top_path, bottom_path, card_path, models=models)
-                    if result["bottom"]["class"].lower() == "shorts":
+                    if result["bottom"]["class"].lower() == ["short", "shorts"]:
                         result["bottom"]["detected"] = False
                         result["status"] = "FAIL"
                 finally:
