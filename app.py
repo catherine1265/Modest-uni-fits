@@ -40,8 +40,11 @@ if file is not None:
     image = Image.open(file).convert("RGB")
     if image.width > image.height:
         image = image.rotate(90, expand=True)
-
-    col1, col2, col3 = st.columns(3)
+    col0, col1, col2, col3 = st.columns(4)
+    with col0:
+        st.subheader("Preview")
+        st.image(image, use_container_width=True)
+        
     with col1:
         st.subheader("Crop TOP")
         crop_top = st_cropper(image, realtime_update=True, key="top")
