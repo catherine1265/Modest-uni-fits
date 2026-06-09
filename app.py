@@ -371,7 +371,21 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 # ── Step 2: Crop ──────────────────────────────────────────────────────────────
 if file is not None:
-    image = Image.open(file).convert("RGB")
+    # Auto-rotate based on EXIF so phone photos appear upright
+    _img_raw = Image.open(file)
+    try:
+        from PIL.ExifTags import TAGS
+        exif = _img_raw._getexif()
+        if exif:
+            for tag, val in exif.items():
+                if TAGS.get(tag) == "Orientation":
+                    if val == 3:   _img_raw = _img_raw.rotate(180, expand=True)
+                    elif val == 6: _img_raw = _img_raw.rotate(270, expand=True)
+                    elif val == 8: _img_raw = _img_raw.rotate(90,  expand=True)
+                    break
+    except Exception:
+        pass
+    image = _img_raw.convert("RGB")
 
     st.markdown("""
     <div class="step-pill">
