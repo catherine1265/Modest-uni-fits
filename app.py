@@ -38,8 +38,8 @@ else:
 
 if file is not None:
     image = Image.open(file).convert("RGB")
-if image.width > image.height:
-    image = image.rotate(90, expand=True)
+    if image.width > image.height:
+        image = image.rotate(90, expand=True)
 
     col1, col2, col3 = st.columns(3)
     with col1:
